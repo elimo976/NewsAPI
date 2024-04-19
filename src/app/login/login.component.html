@@ -1,0 +1,32 @@
+<main class="form-signin w-100 mt-5 mx-auto">
+
+    <form [formGroup]="loginFrm" (ngSubmit)="login()">
+        <h1 class="h3 mb-3 fw-normal">Accedi</h1>
+        <div class="alert alert-warning">
+            Esegui l'accesso per proseguire
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="email" formControlName="email">
+            <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                formControlName="password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember" id="flexCheckDefault"
+                formControlName="remember">
+            <label class="form-check-label" for="flexCheckDefault">
+                Mantieni l'accesso
+            </label>
+        </div>
+        <button [disabled]="loginFrm.invalid" class="btn btn-primary w-100 py-2" type="submit">Accedi</button>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
+    </form>
+    <div *ngIf="errorMessage || loggedMessage" class="alert"
+        [ngClass]="{'alert-danger': errorMessage, 'alert-success': loggedMessage}" role="alert">
+        {{ errorMessage || loggedMessage }}
+    </div>
+</main>
