@@ -20,11 +20,11 @@ export class LoginComponent {
       .subscribe({
         next: data => {
           const email = this.loginFrm.get('email')?.value;
-          const storage = this.loginFrm.value.remember === true ? localStorage : sessionStorage;
           const password = this.loginFrm.get('password')?.value;
           const user = data.find((item: { username: string, password: string }) => item.username === email && item.password === password);
 
           if (user) {
+            const storage = this.loginFrm.value.remember === true ? localStorage : sessionStorage;
             storage.setItem('userLoggato', JSON.stringify(user));
             console.log('Login riuscito:', user);
             this.loggedMessage = "Autenticazione riuscita";
