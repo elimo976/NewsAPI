@@ -1,1 +1,24 @@
-<p>news works!</p>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text">
+            <i class="bi bi-search"></i>
+        </span>
+    </div>
+    <input type="text" class="form-control" placeholder="Cerca qualcosa..." (input)="cerca($event)">
+</div>
+
+<div *ngIf="cercaRisultato.length > 0" class="mt-3">
+    <h3>Risultati della ricerca</h3>
+    <ul class="input-text">
+        <li *ngFor="let article of cercaRisultato">
+            <h4>{{ article.title }}</h4>
+            <p>{{ article.description }}</p>
+            <p>Autore: {{ article.author }}</p>
+            <p>Data di pubblicazione: {{ article.publishedAt | date: "dd/MM/YYYY"}}</p>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="messaggioErrore" class="mt-3">
+    {{ messaggioErrore }}
+</div>
