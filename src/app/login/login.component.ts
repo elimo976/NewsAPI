@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   errorMessage: string = "";
   loggedMessage: string = "";
 
-  constructor(private ls: LoginService) { }
+  constructor(private ls: LoginService, private router: Router) { }
 
   login(): void {
     this.ls.getAutenticazione()
@@ -28,6 +29,7 @@ export class LoginComponent {
             console.log('Login riuscito:', user);
             this.loggedMessage = "Autenticazione riuscita";
             this.loginFrm.reset();
+            this.router.navigateByUrl("/my-app");
           } else {
             console.error("Email o password errati");
             this.errorMessage = "Email o password errati";

@@ -9,14 +9,13 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem("js") === null) {
-      this.router.navigate(['/login']);
+  canActivate(): boolean {
+    const userLoggato = localStorage.getItem('userLoggato');
+    if (userLoggato) {
+      return true; // L'utente è autenticato, consenti l'accesso
+    } else {
+      this.router.navigateByUrl('/login'); // Reindirizza l'utente al login se non è autenticato
       return false;
     }
-    return true;
   }
-
 }

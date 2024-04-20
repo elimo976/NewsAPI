@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { MyAppRoutingModule } from './my-app-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
   declarations: [
-    HomepageComponent
+    HomepageComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,
